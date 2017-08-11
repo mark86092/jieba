@@ -85,6 +85,8 @@ class POSTokenizer(object):
         return '<POSTokenizer tokenizer=%r>' % self.tokenizer
 
     def __getattr__(self, name):
+        if name in ('__setstate__'):
+            raise AttributeError
         if name in ('cut_for_search', 'lcut_for_search', 'tokenize'):
             # may be possible?
             raise NotImplementedError
